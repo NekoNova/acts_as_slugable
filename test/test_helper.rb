@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] = 'test'
 
 require 'rails'
 require 'rails/test_help'
+require 'sqlite3'
 require 'active_record'
 require 'active_support'
 require 'yaml'
@@ -13,6 +14,8 @@ Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
+ActiveSupport::TestCase.test_order = :random
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.method_defined?(:fixture_path=)

@@ -60,10 +60,10 @@ module Slugable
         if self[slug_column].to_s.empty?
           test_string = self[source_column]
 
-          proposed_slug = test_string.strip.downcase.gsub(/[\'\"\#\$\,\.\!\?\%\@\(\)]+/, '')
+          proposed_slug = test_string.strip.downcase.gsub(/['"#\$,.!?%@()]+/, '')
           proposed_slug = proposed_slug.gsub(/&/, 'and')
-          proposed_slug = proposed_slug.gsub(/[\W^-_]+/, '-')
-          proposed_slug = proposed_slug.gsub(/\-{2}/, '-')
+          proposed_slug = proposed_slug.gsub(/[\W]+/, '-')
+          proposed_slug = proposed_slug.gsub(/-{2}/, '-')
 
           suffix = ''
           existing = true
