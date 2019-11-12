@@ -10,16 +10,17 @@ Gem::Specification.new do |s|
   s.authors               = ['Arne De Herdt']
   s.email                 = ['arne.de.herdt@gmail.com']
   s.homepage              = ''
-  s.summary               = 'Gem that implements the old behavior of acts_as_slugable Rails Plugin.'
-  s.description           = 'This gem is an attempt at converting an old Rails 2 plugin into a new Gem.'
+  s.summary               = 'Generates a URL slug based on specific fields of the model implementing this.'
+  s.description           = 'Originally a Rails 2 plugin, this Gem ports that functionality to newer Rails versions.'
   s.license               = 'MIT'
   s.platform              = Gem::Platform::RUBY
   s.required_ruby_version = '>= 2.1'
   s.files                 = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files            = Dir['test/**/*']
 
-  s.add_dependency 'rails', '~> 4.1'
+  s.add_dependency 'rails'
 
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'appraisal'
 end
