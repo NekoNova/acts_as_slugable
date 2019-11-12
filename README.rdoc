@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/coding-bunny/acts_as_slugable.svg?branch=master)](https://travis-ci.org/coding-bunny/acts_as_slugable)
+{<img src="https://travis-ci.org/coding-bunny/acts_as_slugable.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/coding-bunny/acts_as_slugable]
 
 = Acts as slugable readme
 
