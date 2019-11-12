@@ -51,6 +51,6 @@ Thanks to Andrew White (http://pixeltrix.co.uk/) for fixing a conflict with <tt>
 
 Thanks to Philip Hallstrom (http://pjkh.com/) for pointing out some redundant code.
 
-Thanks to Arne De Herdt (https://github.com/NekoNova) for making this a gem.
+Thanks to Arne De Herdt (https://github.com/coding-bunny) for making this a gem.
 
 Thanks to Isoptope (http://isotopedev.com/) on Stackoverflow for resolving the query Issue.
