@@ -11,5 +11,5 @@ gemspec
 # your gem to rubygems.org.
 
 # To use debugger
-# gem 'debugger'
-gem 'sqlite3', '~> 1.3.13'
+gem 'test-unit'
+gem 'sqlite3'

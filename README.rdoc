@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/coding-bunny/acts_as_slugable.svg?branch=master)](https://travis-ci.org/coding-bunny/acts_as_slugable)
+
 = Acts as slugable readme
 
 Generates a URL slug based on a specific fields (e.g. title).

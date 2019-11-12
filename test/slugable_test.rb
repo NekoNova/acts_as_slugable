@@ -30,11 +30,11 @@ class ActsAsSlugableTest < ActiveSupport::TestCase
   test 'model_still_runs_validations' do
     pg = Page.create(title: nil)
     assert !pg.valid?
-    assert pg.errors.get(:title)
+    assert pg.errors[:title]
 
     pg = Page.create(title: '')
     assert !pg.valid?
-    assert pg.errors.get(:title)
+    assert pg.errors[:title]
   end
 
   # Test the update method
@@ -48,11 +48,19 @@ class ActsAsSlugableTest < ActiveSupport::TestCase
     assert_equal 'original-page', pg.url_slug
 
     # update, with title and nil slug
-    pg.update_attributes(title: 'Updated title and slug to nil', url_slug: nil)
+    if pg.respond_to?(:update)
+      pg.update(title: 'Updated title and slug to nil', url_slug: nil)
+    else
+      pg.update_attributes(title: 'Updated title and slug to nil', url_slug: nil)
+    end
     assert_equal 'updated-title-and-slug-to-nil', pg.url_slug
 
     # update, with empty slug
-    pg.update_attributes(title: 'Updated title and slug to empty', url_slug: '')
+    if pg.respond_to?(:update)
+      pg.update(title: 'Updated title and slug to empty', url_slug: '')
+    else
+      pg.update_attributes(title: 'Updated title and slug to empty', url_slug: '')
+    end
     assert_equal 'updated-title-and-slug-to-empty', pg.url_slug
   end
 
