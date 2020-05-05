@@ -12,4 +12,3 @@ gemspec
 
 # To use debugger
 gem 'test-unit'
-gem 'sqlite3'
