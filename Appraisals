@@ -44,6 +44,9 @@ appraise "rails-5.2" do
 end
 
 appraise "rails-6.0" do
-	gem "rails", "~> 6.0"
-	gem 'sqlite3', '~> 1.4'
+	gem "rails", "6.0.2.2"
+    gem "rake", "12.3.3"
+    gem "nokogiri", "1.10.8"
+    gem "rack", "2.0.8"
+	gem "sqlite3", "~> 1.4"
 end

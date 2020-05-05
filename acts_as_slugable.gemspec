@@ -1,7 +1,5 @@
-$:.push File.expand_path('../lib', __FILE__)
-
 # Maintain your gem's version:
-require 'acts_as_slugable/version'
+require_relative 'lib/acts_as_slugable/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
@@ -14,7 +12,6 @@ Gem::Specification.new do |s|
   s.description           = 'Originally a Rails 2 plugin, this Gem ports that functionality to newer Rails versions.'
   s.license               = 'MIT'
   s.platform              = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.1'
   s.files                 = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files            = Dir['test/**/*']
 
