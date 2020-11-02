@@ -1,0 +1,91 @@
+---
+version: 2.1
+commands:
+  appraisal_install:
+    parameters:
+      ruby-version:
+        type: string
+    description: "Perform the installation with Bundler, relying on the CircleCI Cache"
+    steps:
+      - restore_cache:
+          keys:
+            - bundler-cache-<< parameters.ruby-version >>-v1.0-{{ checksum "acts_as_slugable.gemspec" }}
+      - run:
+          name: "Appraisal Install"
+          command: |
+            bundle config --local path "vendor/bundle"
+            bundle install --jobs 4 --retry 3
+            bundle exec appraisal install
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: bundler-cache-<< parameters.ruby-version >>-v1.0-{{ checksum "acts_as_slugable.gemspec" }}
+jobs:
+  tests:
+    parameters:
+      ruby-version:
+        type: string
+      gemfile:
+        type: string
+    docker:
+      - image: circleci/ruby:<< parameters.ruby-version >>
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+    working_directory: ~/acts_as_slugable
+    steps:
+      - checkout
+      - appraisal_install:
+          ruby-version: << parameters.ruby-version >>
+      - run:
+          name: "Tests"
+          command: bundle exec appraisal << parameters.gemfile >> rake test
+      - store_artifacts:
+          path: ./coverage
+      - store_test_results:
+          path: ./test/reports
+      - store_artifacts:
+          path: ./test/reports
+workflows:
+  version: 2.1
+  build-and-test:
+    jobs:
+      # Ruby 2.5.8 configuration matrix
+      - tests:
+          name: "Ruby 2.5 with Rails 5.2"
+          ruby-version: 2.5.8
+          gemfile: rails52
+      - tests:
+          name: "Ruby 2.5 with Rails 6.0"
+          ruby-version: 2.5.8
+          gemfile: rails60
+      - tests:
+          name: "Ruby 2.5 with Rails 6.1"
+          ruby-version: 2.5.8
+          gemfile: rails61
+      # Ruby 2.6 configuration matrix
+      - tests:
+          name: "Ruby 2.6 with Rails 5.2"
+          ruby-version: 2.6.6
+          gemfile: rails52
+      - tests:
+          name: "Ruby 2.6 with Rails 6.0"
+          ruby-version: 2.6.6
+          gemfile: rails60
+      - tests:
+          name: "Ruby 2.6 with Rails 6.1"
+          ruby-version: 2.6.6
+          gemfile: rails61
+      # Ruby 2.7 configuration matrix
+      - tests:
+          name: "Ruby 2.7 with Rails 5.2"
+          ruby-version: 2.7.2
+          gemfile: rails52
+      - tests:
+          name: "Ruby 2.7 with Rails 6.0"
+          ruby-version: 2.7.2
+          gemfile: rails60
+      - tests:
+          name: "Ruby 2.7 with Rails 6.1"
+          ruby-version: 2.7.2
+          gemfile: rails61

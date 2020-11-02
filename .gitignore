@@ -4,3 +4,5 @@
 .idea
 .DS_Store
 pkg/*
+Gemfile.lock
+gemfiles/*.lock
