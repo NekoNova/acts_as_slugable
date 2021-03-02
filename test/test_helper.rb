@@ -12,12 +12,6 @@ require 'acts_as_slugable'
 
 Rails.backtrace_cleaner.remove_silencers!
 
-# Load support files
-if Gem.loaded_specs["rails"].version >= Gem::Version.new("4.0")
-  puts "Rails version #{Gem.loaded_specs["rails"].version}"
-  require_relative "../overwrites/arel/visitors"
-end
-
 ActiveSupport::TestCase.test_order = :random if ActiveSupport::TestCase.respond_to?(:test_order=)
 
 # Load fixtures from the engine

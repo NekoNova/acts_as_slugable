@@ -1,5 +1,10 @@
 #  acts_as_slugable Changelog
 
+# 2.0.0
+* Dropped support for Ruby versions < 2.5.8
+* Dropped support for Rails < 5.2
+* Removed all overwrite code
+
 # 1.1.0
 
 * Updated `rails` to `6.0.2.2` to resolve [GHSA-65cv-r6x7-79hv](https://github.com/advisories/GHSA-65cv-r6x7-79hv)
